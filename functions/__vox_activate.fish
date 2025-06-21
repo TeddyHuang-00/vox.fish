@@ -1,6 +1,6 @@
-function vox-activate --description "Activate a virtual environment"
+function __vox_activate --description "Activate a virtual environment"
     if test (count $argv) -eq 0
-        echo "Usage: vox-activate <name>"
+        echo "Usage: __vox_activate <name>"
         return 1
     end
 

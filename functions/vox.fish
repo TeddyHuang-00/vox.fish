@@ -1,12 +1,16 @@
 function vox --description "Virtual Environment Manager"
-    if test (count $argv) -eq 0
-        echo "Virtual Environment Manager"
-        echo "Commands:"
-        echo "  new <name> [python-version]  - Create new environment"
-        echo "  remove <name>                - Remove environment"
-        echo "  activate <name>              - Activate environment"
-        echo "  deactivate                   - Deactivate current environment"
+    set -l options h/help
+    argparse $options -- $argv
+    or return 1
+
+    if set -q _flag_help
+        __vox_help
         return 0
+    end
+
+    if test (count $argv) -eq 0
+        __vox_help
+        return 1
     end
 
     set cmd $argv[1]
@@ -14,16 +18,16 @@ function vox --description "Virtual Environment Manager"
 
     switch $cmd
         case new
-            vox-new $argv
+            __vox_new $argv
         case remove
-            vox-remove $argv
+            __vox_remove $argv
         case activate
-            vox-activate $argv
+            __vox_activate $argv
         case deactivate
-            vox-deactivate $argv
+            __vox_deactivate $argv
         case '*'
-            echo "Unknown command: $cmd"
-            echo "Available commands: new, remove, activate, deactivate"
+            echo "cuvis: unknown command '$cmd'" >&2
+            echo "Try 'vox --help' for more information." >&2
             return 1
     end
 end

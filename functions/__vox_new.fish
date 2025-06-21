@@ -1,6 +1,6 @@
-function vox-new --description "Create a new virtual environment with uv"
+function __vox_new --description "Create a new virtual environment with uv"
     if test (count $argv) -eq 0
-        echo "Usage: vox-new <name> [python-version]"
+        echo "Usage: __vox_new <name> [python-version]"
         return 1
     end
 

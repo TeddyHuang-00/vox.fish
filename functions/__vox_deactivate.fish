@@ -1,4 +1,4 @@
-function vox-deactivate --description "Deactivate current virtual environment"
+function __vox_deactivate --description "Deactivate current virtual environment"
     if test -n "$VIRTUAL_ENV"
         deactivate
         echo "Deactivated virtual environment"

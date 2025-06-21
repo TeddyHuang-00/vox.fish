@@ -1,6 +1,6 @@
-function vox-remove --description "Remove a virtual environment"
+function __vox_remove --description "Remove a virtual environment"
     if test (count $argv) -eq 0
-        echo "Usage: vox-remove <name>"
+        echo "Usage: __vox_remove <name>"
         return 1
     end
 
